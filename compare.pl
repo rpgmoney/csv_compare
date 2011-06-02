@@ -5,7 +5,7 @@ use warnings;
 use Text::CSV_XS;
 my $filename = "compare_".time();
 my $gfile = $filename.".csv";
-open(MYGFILE, ">$gfile") or die "File: $gfile open error\n";   
+open(MYGFILE, ">$gfile") or die "File: $gfile open error\n";
 my $csv = Text::CSV_XS->new ({ binary => 1 }) or die "Cannot use CSV: ".Text::CSV->error_diag ();
 my $csv2 = Text::CSV_XS->new ({ binary => 1 }) or die "Cannot use CSV: ".Text::CSV->error_diag ();
 my $file = $ARGV[0];
@@ -13,7 +13,7 @@ my $file2 = $ARGV[1];
 #my $file = 'data1_2_1_import.csv';
 #my $file2 = 'data1_2_1_export.csv';
 my $rows = 0;
-my $field_count = 1;   
+my $field_count = 1;
 open (CSV, "<", $file) or die $!;
 while(<CSV>)
 {
@@ -22,7 +22,7 @@ while(<CSV>)
     if($rows != 0)
     {
         my $rows2 = 0;
-        my $compare = 0;  
+        my $compare = 0;
         open (CSV2, "<", $file2) or die $!;
         while(<CSV2>)
         {
@@ -45,7 +45,7 @@ while(<CSV>)
                     last;
                 }
             }
-            $rows2++; 
+            $rows2++;
         }
         if($compare == 0)
         {
