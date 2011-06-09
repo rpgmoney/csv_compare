@@ -14,9 +14,12 @@ my $file2 = $ARGV[1];
 #my $file2 = 'data1_2_1_export.csv';
 my $rows = 0;
 my $field_count = 1;
+my $n1 = 0;
+my $n2 = 0;
 open (CSV, "<", $file) or die $!;
 while(<CSV>)
 {
+    $n1++;
     my $status = $csv->parse($_);
     my @columns = $csv->fields();
     if($rows != 0)
@@ -51,6 +54,7 @@ while(<CSV>)
         {
             #print MYGFILE $columns[0]. ", " . $columns[1] . ", " . $columns[2] . ", ". $columns[3] . ", " . $columns[4] . "\n";
             print MYGFILE "@columns \n";
+            $n2++;
         }
     }
     else
@@ -59,3 +63,5 @@ while(<CSV>)
     }
     $rows++;
 }
+print MYGFILE "n1: $n1 \n";
+print MYGFILE "n2: $n2 \n";
